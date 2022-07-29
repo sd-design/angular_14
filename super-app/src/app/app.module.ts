@@ -3,8 +3,8 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { ArchiveComponent } from './archive/archive.component';
-import { ProductComponent } from './product/product.component';
+import { ArchiveComponent } from './components/archive/archive.component';
+import { ProductComponent } from './components/product/product.component';
 
 @NgModule({
   declarations: [
