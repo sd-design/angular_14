@@ -12,4 +12,7 @@ export class ProductComponent {
   ngOnInit(): void {
   }
   @Input() product: IProduct
+
+  details = false
+
 }

@@ -5,6 +5,11 @@
   </h1>
 </div>
 <app-archive></app-archive>
+<div class="container mx-auto mt-8 flex flex-row items-center">
+<div *ngIf="loading" class="mt-8 p-8 text-center mx-auto text-lg border border-indigo-600 w-1/6 rounded-full">Loading....</div>  
+</div>
+<div class="container mx-auto mt-4 ">
+<app-product *ngFor="let product of products; let i = index" [product] ="product"></app-product>
 
-<app-product [product]="products[0]"
-></app-product>
+
+</div>
