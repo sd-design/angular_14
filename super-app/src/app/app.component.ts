@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { tap, Observable } from 'rxjs';
 import { IProduct } from './models/product';
 import { ProductService } from './services/products.service';
 
@@ -11,14 +12,15 @@ import { ProductService } from './services/products.service';
 export class AppComponent  implements OnInit {
   title = 'super-app';
 
-  products: IProduct[] = []
-
+  // products: IProduct[] = []
+products$: Observable<IProduct[]>
   loading = false
 
   constructor(private productsService: ProductService) {
     
   }
 
+  /** 
   ngOnInit(): void {
     this.loading = true
     this.productsService.getAll().subscribe(products =>{
@@ -26,4 +28,14 @@ export class AppComponent  implements OnInit {
       this.loading = false
     })
   }
+  */
+
+  ngOnInit(): void {
+    this.loading = true
+    this.products$ = this.productsService.getAll().pipe(
+      tap(()=> this.loading = false)
+    )
+
+  }
+
 }
