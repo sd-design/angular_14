@@ -3,18 +3,23 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { ArchiveComponent } from './archive/archive.component';
-import { ProductComponent } from './product/product.component';
+import { ArchiveComponent } from './components/archive/archive.component';
+import { ProductComponent } from './components/product/product.component';
+
+import { HttpClientModule} from '@angular/common/http';
+import { GlobalErrorComponent } from './components/global-error/global-error.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ArchiveComponent,
-    ProductComponent
+    ProductComponent,
+    GlobalErrorComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

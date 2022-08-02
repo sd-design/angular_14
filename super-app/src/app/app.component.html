@@ -1,10 +1,20 @@
-
+<app-global-error></app-global-error>
   <div class="container mx-auto flex justify-center mt-8">
   <h1 class="text-3xl font-bold underline">
     Hello {{title | titlecase }}!
   </h1>
 </div>
-<app-archive></app-archive>
+<div *ngIf="loading" class="mt-5 p-8 text-center mx-auto text-lg border border-indigo-600 w-1/6 rounded-full">Loading....</div> 
 
-<app-product [product]="products[0]"
-></app-product>
+  <app-archive *ngIf="!loading"></app-archive>
+  <div class="mx-auto container text-center pt-2 mt-2" *ngIf="!loading">
+  <input type="text" class="mb-2 border py-2 px-4 w-1/2 rounded" placeholder="Search">
+  </div>
+  <div class="container mx-auto mt-4 flex flex-row items-center">
+  
+  </div>
+  <div class="container mx-auto mt-4 ">
+  <!-- <app-product *ngFor="let product of products; let i = index" [product] ="product"></app-product> -->
+  <app-product *ngFor="let product of products$| async; let i = index" [product] ="product"></app-product>
+
+  </div>
