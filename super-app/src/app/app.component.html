@@ -8,13 +8,13 @@
 
   <app-archive *ngIf="!loading"></app-archive>
   <div class="mx-auto container text-center pt-2 mt-2" *ngIf="!loading">
-  <input type="text" class="mb-2 border py-2 px-4 w-1/2 rounded" placeholder="Search">
+  <input type="text" class="mb-2 border py-2 px-4 w-1/2 rounded" placeholder="Search" [(ngModel)]="sTitle">
   </div>
   <div class="container mx-auto mt-4 flex flex-row items-center">
   
   </div>
-  <div class="container mx-auto mt-4 ">
+  <div class="container mx-auto mt-4" *ngIf="products$ | async as products">
   <!-- <app-product *ngFor="let product of products; let i = index" [product] ="product"></app-product> -->
-  <app-product *ngFor="let product of products$| async; let i = index" [product] ="product"></app-product>
+  <app-product *ngFor="let product of products | filterProducts: sTitle; let i = index" [product] ="product"></app-product>
 
   </div>

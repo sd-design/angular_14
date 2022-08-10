@@ -1,7 +1,8 @@
 import { Injectable } from "@angular/core";
 import { HttpClient, HttpErrorResponse, HttpParams } from "@angular/common/http";
 import { catchError, delay, Observable, retry, throwError } from "rxjs";
-import { IProduct } from '../models/product'
+import { IProduct } from '../models/product';
+import { Login } from '../models/login';
 import { ErrorService } from "./error.service";
 
 @Injectable({
@@ -37,6 +38,18 @@ export class ProductService {
             catchError(this.errorHandler.bind(this))
             )
         }
+
+        userLogin(): Observable<Login[]> {
+            return this.http.post<Login[]>('https://fakestoreapi.com/auth/login',{
+                params: new HttpParams({
+                    fromObject: {limit: 9}
+                  })
+            }).pipe(
+                retry(2),
+                delay(2000),
+                catchError(this.errorHandler.bind(this))
+                )
+            }
 
     private errorHandler(error: HttpErrorResponse){
         this.errorService.handle(error.message)

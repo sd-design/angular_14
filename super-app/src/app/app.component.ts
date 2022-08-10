@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { tap, Observable } from 'rxjs';
 import { IProduct } from './models/product';
+import { Login } from './models/login';
 import { ProductService } from './services/products.service';
 
 
@@ -13,7 +14,9 @@ export class AppComponent  implements OnInit {
   title = 'super-app';
 
   // products: IProduct[] = []
-products$: Observable<IProduct[]>
+  products$: Observable<IProduct[]>
+  login$: Observable<Login[]>
+  sTitle =''
   loading = false
 
   constructor(private productsService: ProductService) {

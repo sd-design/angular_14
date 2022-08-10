@@ -8,18 +8,22 @@ import { ProductComponent } from './components/product/product.component';
 
 import { HttpClientModule} from '@angular/common/http';
 import { GlobalErrorComponent } from './components/global-error/global-error.component';
+import { FilterProductsPipe } from './pipes/filter-products.pipe';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
     AppComponent,
     ArchiveComponent,
     ProductComponent,
-    GlobalErrorComponent
+    GlobalErrorComponent,
+    FilterProductsPipe
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
