@@ -4,17 +4,24 @@
     Hello {{title | titlecase }}!
   </h1>
 </div>
-<div *ngIf="loading" class="mt-5 p-8 text-center mx-auto text-lg border border-indigo-600 w-1/6 rounded-full">Loading....</div> 
+<div *ngIf="loading" class="mt-5 p-8 text-center mx-auto text-lg border border-indigo-600 w-1/6 rounded-full">Loading....</div>
 
   <app-archive *ngIf="!loading"></app-archive>
   <div class="mx-auto container text-center pt-2 mt-2" *ngIf="!loading">
   <input type="text" class="mb-2 border py-2 px-4 w-1/2 rounded" placeholder="Search" [(ngModel)]="sTitle">
   </div>
   <div class="container mx-auto mt-4 flex flex-row items-center">
-  
+
   </div>
   <div class="container mx-auto mt-4" *ngIf="products$ | async as products">
   <!-- <app-product *ngFor="let product of products; let i = index" [product] ="product"></app-product> -->
   <app-product *ngFor="let product of products | filterProducts: sTitle; let i = index" [product] ="product"></app-product>
 
   </div>
+
+  <app-modal title="Create new product" *ngIf="modalService.isVisible$ | async">
+  <app-create-product></app-create-product>
+  </app-modal>
+
+<button class="rounded-full bg-cyan-500 text-white fixed right-5 bottom-5 py-2 px-4"
+(click)="modalService.open()">+</button>

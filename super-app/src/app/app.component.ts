@@ -3,6 +3,7 @@ import { tap, Observable } from 'rxjs';
 import { IProduct } from './models/product';
 import { Login } from './models/login';
 import { ProductService } from './services/products.service';
+import {ModalService} from "./services/modal.service";
 
 
 @Component({
@@ -19,11 +20,14 @@ export class AppComponent  implements OnInit {
   sTitle =''
   loading = false
 
-  constructor(private productsService: ProductService) {
-    
+  constructor(
+    private productsService: ProductService,
+    public modalService: ModalService
+              ) {
+
   }
 
-  /** 
+  /**
   ngOnInit(): void {
     this.loading = true
     this.productsService.getAll().subscribe(products =>{

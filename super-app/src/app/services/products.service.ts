@@ -25,7 +25,7 @@ export class ProductService {
         }).pipe(
             delay(2000) //Delay - stopping loading data
         )
-    } 
+    }
     */
     getAll(): Observable<IProduct[]> {
         return this.http.get<IProduct[]>('https://fakestoreapi.com/products',{
@@ -37,6 +37,10 @@ export class ProductService {
             delay(2000),
             catchError(this.errorHandler.bind(this))
             )
+        }
+
+        create(product: IProduct):Observable<IProduct> {
+      return this.http.post<IProduct>('https://fakestoreapi.com/products', product)
         }
 
         userLogin(): Observable<Login[]> {
